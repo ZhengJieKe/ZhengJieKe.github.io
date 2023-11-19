@@ -4,12 +4,16 @@
  * @Author: zhengjieke
  * @Date: 2023-09-23 22:00:44
  * @LastEditors: JK
- * @LastEditTime: 2023-09-23 22:47:04
+ * @LastEditTime: 2023-10-03 12:24:48
  */
 function switchNightMode () {
   document.querySelector('body').insertAdjacentHTML('beforeend', '<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>'),
     setTimeout(function () {
-      document.querySelector('body').classList.contains('DarkMode') ? (document.querySelector('body').classList.remove('DarkMode'), localStorage.setItem('isDark', '0'), document.getElementById('modeicon').setAttribute('xlink:href', '#icon-moon')) : (document.querySelector('body').classList.add('DarkMode'), localStorage.setItem('isDark', '1'), document.getElementById('modeicon').setAttribute('xlink:href', '#icon-sun')),
+      document.querySelector('body').classList.contains('DarkMode') ? (document.querySelector('body').classList.remove('DarkMode'),
+        localStorage.setItem('isDark', '0'),
+        document.getElementById('modeicon').setAttribute('xlink:href', '#icon-moon')) : (document.querySelector('body').classList.add('DarkMode'),
+          localStorage.setItem('isDark', '1'),
+          document.getElementById('modeicon').setAttribute('xlink:href', '#icon-sun')),
         setTimeout(function () {
           document.getElementsByClassName('Cuteen_DarkSky')[0].style.transition = 'opacity 3s'
           document.getElementsByClassName('Cuteen_DarkSky')[0].style.opacity = '0'
@@ -27,11 +31,11 @@ function switchNightMode () {
   } else {
     activateLightMode()
     saveToLocal.set('theme', 'light', 2)
-    document.querySelector('body').classList.add('DarkMode'), document.getElementById('modeicon').setAttribute('xlink:href', '#icon-moon')
+    document.querySelector('body').classList.add('DarkMode'),
+      document.getElementById('modeicon').setAttribute('xlink:href', '#icon-moon')
   }
   // handle some cases
   typeof utterancesTheme === 'function' && utterancesTheme()
   typeof FB === 'object' && window.loadFBComment()
   window.DISQUS && document.getElementById('disqus_thread').children.length && setTimeout(() => window.disqusReset(), 200)
 }
-
