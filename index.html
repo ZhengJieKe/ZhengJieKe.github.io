@@ -1,46 +1,141 @@
-<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>JK</title><meta name="author" content="JK"><meta name="copyright" content="JK"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
-<meta property="og:title" content="JK">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>null</title><meta name="author" content="柯"><meta name="copyright" content="柯"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="欢迎来到我的博客">
+<meta property="og:type" content="website">
+<meta property="og:title">
 <meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="JK">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo30rl4qhpfio005od3i2nk1qq0ahjfmpo?imageView2/2/w/540/format/webp">
-<meta property="article:author" content="JK">
+<meta property="og:site_name">
+<meta property="og:description" content="欢迎来到我的博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/butterfly-icon.png">
+<meta property="article:author" content="柯">
+<meta property="article:tag" content="博客,技术分享,生活记录">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo30rl4qhpfio005od3i2nk1qq0ahjfmpo?imageView2/2/w/540/format/webp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+<meta name="twitter:image" content="http://example.com/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": null,
+  "url": "http://example.com/"
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/index.html"><link rel="preconnect"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/pluginsSrc/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'undefined')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'undefined')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
   localSearch: undefined,
   translate: undefined,
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
   copy: {
-    success: 'Copy successfully',
-    error: 'Copy error',
-    noSupport: 'The browser does not support'
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
   },
   relativeDate: {
     homepage: false,
     post: false
   },
-  runtime: 'days',
+  runtime: '',
   dateSuffix: {
-    just: 'Just',
-    min: 'minutes ago',
-    hour: 'hours ago',
-    day: 'days ago',
-    month: 'months ago'
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
   },
   copyright: undefined,
-  lightbox: 'fancybox',
+  lightbox: 'null',
   Snackbar: undefined,
-  source: {
-    justifiedGallery: {
-      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
-    }
+  infinitegrid: {
+    js: '/pluginsSrc/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
   },
   isPhotoFigcaption: false,
-  islazyload: false,
+  islazyloadPlugin: false,
   isAnchor: false,
   percent: {
     toc: true,
@@ -48,140 +143,101 @@
   },
   autoDarkmode: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: 'JK',
-  isPost: false,
-  isHome: true,
+  title: '',
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2023-11-19 12:37:17'
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
-  }
-  .justified-gallery img {
-    opacity: 1
-  }
-
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
-  }
-</style></noscript><script>(win=>{
-    win.saveToLocal = {
-      set: function setWithExpiry(key, value, ttl) {
-        if (ttl === 0) return
-        const now = new Date()
-        const expiryDay = ttl * 86400000
-        const item = {
-          value: value,
-          expiry: now.getTime() + expiryDay,
-        }
-        localStorage.setItem(key, JSON.stringify(item))
-      },
-
-      get: function getWithExpiry(key) {
-        const itemStr = localStorage.getItem(key)
-
-        if (!itemStr) {
-          return undefined
-        }
-        const item = JSON.parse(itemStr)
-        const now = new Date()
-
-        if (now.getTime() > item.expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return item.value
-      }
-    }
+  pageType: 'home'
+}</script><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/mycss.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page fixed" id="page-header" style="background-image: url(https://wx1.sinaimg.cn/large/005w1P4Ugy1i4p9yxix7zj31rc0zk7vq.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name"></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title"></h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="post_cover left"><a href="/post/60841.html" title="论路由器与 Robot Framework 是否强关联？"><img class="post-bg" src="https://wx4.sinaimg.cn/large/006WYq6ngy1i1ew6b93k2j32yo1o01kx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="论路由器与 Robot Framework 是否强关联？"></a></div><div class="recent-post-info"><a class="article-title" href="/post/60841.html" title="论路由器与 Robot Framework 是否强关联？">论路由器与 Robot Framework 是否强关联？</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-08-25T08:35:29.000Z" title="发表于 2025-08-25 16:35:29">2025-08-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/">软件测试</a></span></div><div class="content">一、本文的采访1. Pekka：水文的起因是什么？小黑子：就是看到几个好为人 “师” 的评论 ಠ_ಠ ，对 RF 与路由器之间的关系很好奇，想了解 RF 是路由器的唯一，还是只是备胎 ಥ ͡ ͜ʖ ͡ಥ 2. Pekka：说 RF 是过时的工具，我感应到有些人很激动，你分析下原因？小黑子：分为两类人。 第一类是入行早的，在 robot Framework 上有大量的时间投资和经验，甚至还有相关著作的，在听到别人说它过时了，可能会感到自己的工作和技能被贬低。所以你可以看到，明明是在说工具过时，他们却一直在争辩技术没有过时一说。 第二类是新生代的测试，一般都是在第一份工作的老项目里有稍微接触过一点，他们肯定是体验过这个工具的不尽人意之处，也在后续其他公司看到了更好的模式和更好的工具，但是本着前大佬们选用这个工具，肯定是有他们不知道的缘由的自我 PUA 心理，形成了一种崇拜，对该工具的批评可能会被视为对自己所属群体或社区的批评，然后引发他们群体认同感的反应。 3. Pekka：传统企业真大多用的是 RF 吗？小黑子： 这一行忘了一件事，早期 功能验证、自动化测试、性能测试 是三个岗位，...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/post/17770.html" title="关于招聘时的一点人性复杂"><img class="post-bg" src="https://wx1.sinaimg.cn/mw2000/71d0dc7dgy1i4q5u0s1x5j21hc0o1dze.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="关于招聘时的一点人性复杂"></a></div><div class="recent-post-info"><a class="article-title" href="/post/17770.html" title="关于招聘时的一点人性复杂">关于招聘时的一点人性复杂</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-08-25T08:16:19.858Z" title="发表于 2025-08-25 16:16:19">2025-08-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/">软件测试</a></span></div><div class="content">当你面试无法通过时，不要过多在技术上自责，除开技术外，其实还是那么一点社会学在里面，你可以通过这些找找原因，面试官是会因非技术因素（如嫉妒、利益竞争、隐性歧视）拒绝候选人，尤其是在经济下行期，更倾向于“自保”或“维护内部权力结构”。  一、年龄歧视：不愿招比自己“老”的候选人动机 权力威胁：担心资深候选人“不服管”，挑战自己的管理权威； 成本考量：年龄大的候选人薪资预期高，经济下行期企业预算低，更倾向“便宜听话”的年轻人； 刻板印象：认为大龄员工技术迭代慢，不愿接受新工具、新方式。   二、能力威胁：排斥比自己“强”的候选人动机 地位危机：面试官担心招入能力过强的下属，威胁自身晋升机会或者让自己进入裁员池； 团队平衡：部分管理者偏好“可控”的团队，避免“刺头型人才”打破现有权力结构； 利益捆绑：内部可能有“关系户”需安排，优秀候选人反而成为障碍。   三、服从性测试：打压“不听话”的候选人动机 控制成本：经济低迷期企业倾向于选择“妥协度高”的员工； 维护权威：管理层需要绝对服从的执行者，而非独立思考者； 筛选绵羊：能力中等但听话 &gt;&gt; 能力突出有个性。   四、性别&...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/post/12278.html" title="从水帖数认识机器学习"><img class="post-bg" src="https://wx3.sinaimg.cn/mw2000/71d0dc7dgy1i4pvfvqnc7j22s01ka1kx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="从水帖数认识机器学习"></a></div><div class="recent-post-info"><a class="article-title" href="/post/12278.html" title="从水帖数认识机器学习">从水帖数认识机器学习</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-08-25T07:21:01.117Z" title="发表于 2025-08-25 15:21:01">2025-08-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></span></div><div class="content">1.什么是机器学习概念   机器学习起源于数据的统计和数学建模。 机器学习的基本理念是使用过去观测到的数据来预测未知的结果或值。   简单来说让计算机像人类一样，从经验（数据）中学习规律（建立模型），然后用这个规律应对新情况（预测&#x2F;决策） 举栗子结合 我在 testhome 中 的发帖，根据水贴时间点和水帖数量，来预测在某年某个月的水帖数量。  2. 模型可以视为一种函数  模型是机器学习的核心组件，是我们最终要尝试构建的内容。 机器学习基于数学和统计学，因此通常会使用数学术语来思考机器学习模型。 本质上，机器学习模型是一种软件应用程序，它封装一个函数用于根据一个或多个输入值计算输出值。 定义该函数的过程称为训练。   训练和推理涉及的步骤  ➊ 训练数据由过去的观测值组成。通常用变量 x 表示特征，y 表示标签(预测的”答案”)。由于一个观测值（如一条数据）往往包含多个特征，因此 x 实际上是一个向量（即由多个值组成的数组），形式如：x &#x3D; [x₁, x₂, x₃, …]。如小黑子发水帖的场景中，目标是训练一个根据月份预测小黑子发帖数量的模型。当月（天数、气...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/post/16107.html" title="Hello World"><img class="post-bg" src="https://wx1.sinaimg.cn/mw2000/71d0dc7dgy1i4pvfvrmpaj20x40in1kx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"></a></div><div class="recent-post-info"><a class="article-title" href="/post/16107.html" title="Hello World">Hello World</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-08-24T06:15:30.983Z" title="发表于 2025-08-24 14:15:30">2025-08-24</time></span></div><div class="content">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;  More info: Writing Run server1$ hexo server  More info: Server Generate static files1$ hexo generate  More info: Generating Deploy to remote sites1$ hexo deploy  More info: Deployment </div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/post/25326.html" title="讽刺情景剧：如果真为学习，少加点技术群"><img class="post-bg" src="https://wx1.sinaimg.cn/large/006WYq6ngy1i1ew6buc39j32yo1o0wxw.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="讽刺情景剧：如果真为学习，少加点技术群"></a></div><div class="recent-post-info"><a class="article-title" href="/post/25326.html" title="讽刺情景剧：如果真为学习，少加点技术群">讽刺情景剧：如果真为学习，少加点技术群</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-08-20T09:03:36.000Z" title="发表于 2025-08-20 17:03:36">2025-08-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/">软件测试</a></span></div><div class="content">人物：1.   XXX:  刚出道就是测开，已经工作了几年，最近写了一个前后端分离的测试平台 2.   A：测开，功能测试转了测开，已经工作了几年 3.   B： 功能测试，做过几年自动化 4.   C：功能测试，刚入行不久 5.   D：功能测试，已经工作了几年，一直想转测开 6.   E:   测试应届生  地点： 某技术交流群道具： 微信客户端备注： 虚拟人物，未映射任何人 开场： 测试（唱）我比测开更勤快，能干粗活能挑抬，上线帮你顶黑锅，裁员替你卷铺盖，你桌上只添一鼠标，我不贪钱，不挑活，点点点，听安排  第一幕：逞工衒巧旁白：（女中音） 苦逼工作告一段落，已经来到周五晚上  XXX： 这是我写的 XXX 测试平台（附上体验地址和使用文档）  群里沸腾  A：XXX 哥好牛 ！ B： XXX 哥牛逼！ C: XXX 佬太牛啦！ XXX： 哈哈哈 A：哈哈哈 B：哈哈哈 C: 哈哈哈 D： 这个 XXX 咋实现的? E： 同问  画外音： 静悄悄的鸦雀无声，大伙快点说话呀！  A：你仔细看文档，上面说得很清楚 B：这个可以百度 C: 问下 gpt 嘛 D： 我看看(看到了一...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/post/58604.html" title="姜菌说，测试一定要会测试"><img class="post-bg" src="https://wx1.sinaimg.cn/mw2000/71d0dc7dgy1i4q5shfw96j22qr1jk4qq.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="姜菌说，测试一定要会测试"></a></div><div class="recent-post-info"><a class="article-title" href="/post/58604.html" title="姜菌说，测试一定要会测试">姜菌说，测试一定要会测试</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-07-25T08:00:40.000Z" title="发表于 2025-07-25 16:00:40">2025-07-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/">软件测试</a></span></div><div class="content"> HR 曾经跟我反馈过，说面试者对我颇有微词。 我问原因。 她说面试者觉得我问的问题大多是业务理解和用例设计的基础问题，并未考核他的技术能力，怎么还挂了他。 我不理解。 我陷入沉思。 我不禁要问。 谁带坏了这种风气?  难道用例设计不是测试最核心最基础的技术吗？新入局的兄弟们是不是真的了解这个职业的工作内容？ 是幻想天天 搞开发、安全、性能、架构、AI、运维、云原生还是 和开发吵架，然后把开发的活干了，让他心服口服？ 都不是 普罗大众的测试日常基本都是围绕以下这几个，我象征性的给了比例：  业务需求分析拆解（18%） 需求会议评审（2%） 手工测试执行（15%） 测试用例设计与维护 （14%） 缺陷跟踪与复现 （12%） 测试环境部署验证 （10%） 自动化实现与维护 （9%） 跨部门需求对齐 （8%） 测试数据&#x2F;物料准备（7%） 冒烟测试执行 （4%） 新技术调研&#x2F;工具研发 （1%）   测试设计相关（1+3+4+5+6+10）耗时占比达 73%，如果这个比例不高，离裁员不远了 沟通表达相关（2+8+9）耗时占比达 17% 编码相关工作（7+11）仅占 10...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/post/2333.html" title="关于软件测试的几种不同意识流"><img class="post-bg" src="https://wx4.sinaimg.cn/mw690/006oGz9ggy1i4ltr2rj9cj3272272e81.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="关于软件测试的几种不同意识流"></a></div><div class="recent-post-info"><a class="article-title" href="/post/2333.html" title="关于软件测试的几种不同意识流">关于软件测试的几种不同意识流</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-05-25T07:49:44.000Z" title="发表于 2025-05-25 15:49:44">2025-05-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/">软件测试</a></span></div><div class="content">众所周知，测试现在有三种意识流：唯技术论、唯业务论、中庸派，这里像分析业务需求一样，分析下为什么会有这些意识的产生，  1. 唯技术论者（多数为早期互联网红利受益者） 背景特征：2010- 2018 年前后入行，身处互联网爆发期（移动互联网崛起、资本涌入、用户增长红利）。 “幸存”逻辑： 业务容错率高： 市场增量巨大，产品方向试错空间大，业务失败常被归因于**“方向”**而非“质量”。测试的核心价值更易体现在“伪效率”（如自动化覆盖率、提测速度）和“坤术亮点”（如搭建测试平台、引入 AI 测试）。 技术杠杆效应强： 在业务快速迭代中，提升测试效率的技术手段（自动化、持续集成）能立竿见影地体现价值，成为晋升的关键筹码。 未经历“业务寒冬”： 他们很少遇到因测试对核心业务逻辑理解不足导致重大线上事故或用户流失的情况（业务本身增长掩盖了问题）。   结论： 他们的成功经验强化了“技术&#x3D;价值”的认知，忘记了红利期的高容错率，遗忘了职场会有的人情世故，忽略了业务深度在质量保障中的底层作用。   2. 唯业务论者（强业务领域从业者） 背景特征：主要服务于金融、政务、传统企业数字化转...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/post/36810.html" title="一件有趣的小事"><img class="post-bg" src="https://wx1.sinaimg.cn/mw2000/71d0dc7dgy1i4q5sqxytsj22yo1o0hdt.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="一件有趣的小事"></a></div><div class="recent-post-info"><a class="article-title" href="/post/36810.html" title="一件有趣的小事">一件有趣的小事</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-04-08T08:45:21.000Z" title="发表于 2025-04-08 16:45:21">2025-04-08</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/">生活随笔</a></span></div><div class="content">昨晚剪发 对 Tony 问出多年疑惑  问：“为什么店不大，但要配对讲机？”  刻板印象中，认为是在“扮嘢”做无用功，营造专业感  答： “只因吹风机噪音大，耳麦能清晰地沟通”  果然人不能太自以为是，基于表象的认知，往往容易忽略实际应用场景的复杂性 </div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/post/4872.html" title="已打完黑神话第三章，小小回顾感悟下"><img class="post-bg" src="https://wx4.sinaimg.cn/mw2000/71d0dc7dgy1i4q6ercctdj22nk140kjs.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="已打完黑神话第三章，小小回顾感悟下"></a></div><div class="recent-post-info"><a class="article-title" href="/post/4872.html" title="已打完黑神话第三章，小小回顾感悟下">已打完黑神话第三章，小小回顾感悟下</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-09-15T14:45:21.000Z" title="发表于 2024-09-15 22:45:21">2024-09-15</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/">生活随笔</a></span></div><div class="content"> 第一章：火照黑云 第一章打完后，最后动画里黑熊精和观音的对话我觉得蛮有意思的，想拿出来分享下，并用其中的道理迁移到练习生行业的部分现象中:smiling_imp: 、   黑熊精：出家人尘缘已断、金海尽干，长老为何放不下一件袈裟。  观音：若不披上这件衣裳，众生又怎知我，尘缘已断、金海尽干。   1. 金池长老的心理分析金池长老相信大家都认识，从小到大在各类的影视改编作品中看过，作为一名 270 岁的得道高僧，不仅是观音禅院的住持，还收集了众多件名贵袈裟。可他却始终放不下唐僧的锦襕袈裟，这不仅是对一件珍贵物品的贪婪，更深层次的是对外在荣誉和地位的执迷。拥有唐僧的袈裟，就意味着在修行上的成就和能够得到外界的认可。他对外在荣誉的追求胜过对内在修为的关心。他的内心并不在于修行的真实深度，而是希望通过一件象征性的物品来赢得他人的敬仰和仰慕，在金池的世界观里，袈裟不仅仅是象征佛法的衣物，而是一种象征成就和权威的外在标志。因此，他无比渴望通过获取袈裟来掩盖自己在内在修行上的不足，反映了他内心的虚荣和不安 ​。 2.延伸至现实世界生活中也会有这么一种人，言语间经常充满着一种“怨妇式”的反讽与...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/post/48987.html" title="工作常用技术名词（人话版）"><img class="post-bg" src="https://wx4.sinaimg.cn/large/d315af46gy1i2bc7x5xz1j20zk0k0ta7.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="工作常用技术名词（人话版）"></a></div><div class="recent-post-info"><a class="article-title" href="/post/48987.html" title="工作常用技术名词（人话版）">工作常用技术名词（人话版）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-06-25T12:37:36.000Z" title="发表于 2024-06-25 20:37:36">2024-06-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/">软件测试</a></span></div><div class="content">背景    很多名称其实看字面意思都挺抽象的，有时看群里的测试大佬在不停蹦这类术语，感觉很高大上     但其实很多你应该是知道的，只不过没想到别人是这样叫它的。又或者你的主编程语言不是Java     所以看不懂他们在讲啥，因为大部分是Java后端的知识点或者是运维的知识(这帮卷王)。     我尝试翻译成【**人话**】，方便刚入行的新人。也欢迎大家在评论区补充。  1.技术概念名词类𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝 1.1 脚手架▧▧ 该名词如果熟悉工地的，应该会知道脚手架是建筑时 房子周围搭的铁架子。软件开发中，脚手架的意思就是一组预设的代码和文件结构，方便开发人员更快的搭建一个基本的项目框架。前端框架大都有脚手架工具，如使用 React 脚手架创建一个 react 项目 12$ npx create-react-app react-basic  //   npx create-react-app 是固定命令，create-react-app是React脚手架的名称  生成如下： 𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝...</div></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">柯</div><div class="author-info-description">欢迎来到我的博客</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn"><i class="iconfont icon-youxishoubing"></i><span>小程序</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"><p>欢迎来到我的技术博客！</p><div class='xpand' style='height:200px;'><canvas class='illo' width='800' height='800' style='max-width: 200px; max-height: 200px; touch-action: none; width: 640px; height: 640px;'></canvas></div><script src='https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/twopeople1.js'></script><script src='https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/zdog.dist.js'></script><script src='https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/twopeople.js'></script><style>.card-widget.card-announcement {margin: 0;align-items: center;justify-content: center;text-align: center;}canvas {display: block;margin: 0 auto;cursor: move;}</style></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/post/60841.html" title="论路由器与 Robot Framework 是否强关联？"><img src="https://wx4.sinaimg.cn/large/006WYq6ngy1i1ew6b93k2j32yo1o01kx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="论路由器与 Robot Framework 是否强关联？"/></a><div class="content"><a class="title" href="/post/60841.html" title="论路由器与 Robot Framework 是否强关联？">论路由器与 Robot Framework 是否强关联？</a><time datetime="2025-08-25T08:35:29.000Z" title="发表于 2025-08-25 16:35:29">2025-08-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/17770.html" title="关于招聘时的一点人性复杂"><img src="https://wx1.sinaimg.cn/mw2000/71d0dc7dgy1i4q5u0s1x5j21hc0o1dze.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="关于招聘时的一点人性复杂"/></a><div class="content"><a class="title" href="/post/17770.html" title="关于招聘时的一点人性复杂">关于招聘时的一点人性复杂</a><time datetime="2025-08-25T08:16:19.858Z" title="发表于 2025-08-25 16:16:19">2025-08-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/12278.html" title="从水帖数认识机器学习"><img src="https://wx3.sinaimg.cn/mw2000/71d0dc7dgy1i4pvfvqnc7j22s01ka1kx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="从水帖数认识机器学习"/></a><div class="content"><a class="title" href="/post/12278.html" title="从水帖数认识机器学习">从水帖数认识机器学习</a><time datetime="2025-08-25T07:21:01.117Z" title="发表于 2025-08-25 15:21:01">2025-08-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/16107.html" title="Hello World"><img src="https://wx1.sinaimg.cn/mw2000/71d0dc7dgy1i4pvfvrmpaj20x40in1kx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/post/16107.html" title="Hello World">Hello World</a><time datetime="2025-08-24T06:15:30.983Z" title="发表于 2025-08-24 14:15:30">2025-08-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/25326.html" title="讽刺情景剧：如果真为学习，少加点技术群"><img src="https://wx1.sinaimg.cn/large/006WYq6ngy1i1ew6buc39j32yo1o0wxw.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="讽刺情景剧：如果真为学习，少加点技术群"/></a><div class="content"><a class="title" href="/post/25326.html" title="讽刺情景剧：如果真为学习，少加点技术群">讽刺情景剧：如果真为学习，少加点技术群</a><time datetime="2025-08-20T09:03:36.000Z" title="发表于 2025-08-20 17:03:36">2025-08-20</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/TCP-IP%E5%8D%8F%E8%AE%AE/"><span class="card-category-list-name">TCP/IP协议</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"><span class="card-category-list-name">机器学习</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E6%8A%80%E5%B7%A7/"><span class="card-category-list-name">生活技巧</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/"><span class="card-category-list-name">生活随笔</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/"><span class="card-category-list-name">软件测试</span><span class="card-category-list-count">8</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/AI/" style="font-size: 1.15em; color: rgb(174, 50, 138);">AI</a><a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 1.15em; color: rgb(50, 50, 50);">机器学习</a><a href="/tags/%E6%8E%A2%E7%B4%A2/" style="font-size: 1.15em; color: rgb(118, 91, 50);">探索</a><a href="/tags/%E5%92%96%E5%95%A1/" style="font-size: 1.15em; color: rgb(130, 131, 128);">咖啡</a><a href="/tags/%E6%8A%80%E6%9C%AF/" style="font-size: 1.15em; color: rgb(177, 148, 176);">技术</a><a href="/tags/%E5%8E%9F%E7%90%86/" style="font-size: 1.15em; color: rgb(191, 87, 147);">原理</a><a href="/tags/%E6%84%9F%E6%82%9F/" style="font-size: 1.25em; color: rgb(97, 79, 50);">感悟</a><a href="/tags/%E9%9A%8F%E8%AE%B0/" style="font-size: 1.25em; color: rgb(104, 171, 155);">随记</a><a href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 1.15em; color: rgb(50, 194, 79);">网络协议</a><a href="/tags/%E9%9D%A2%E8%AF%95%E7%BB%8F%E9%AA%8C/" style="font-size: 1.35em; color: rgb(139, 154, 62);">面试经验</a><a href="/tags/%E8%81%8C%E5%9C%BA%E7%BB%8F%E9%AA%8C/" style="font-size: 1.45em; color: rgb(178, 152, 124);">职场经验</a><a href="/tags/%E6%B1%82%E8%81%8C%E5%88%86%E6%9E%90/" style="font-size: 1.35em; color: rgb(50, 50, 72);">求职分析</a><a href="/tags/%E6%8A%80%E6%9C%AF%E5%90%8D%E8%AF%8D/" style="font-size: 1.15em; color: rgb(88, 168, 107);">技术名词</a><a href="/tags/%E5%B7%A5%E4%BD%9C%E7%BB%8F%E9%AA%8C/" style="font-size: 1.15em; color: rgb(106, 94, 101);">工作经验</a><a href="/tags/%E6%97%A0%E6%95%88%E5%8A%AA%E5%8A%9B/" style="font-size: 1.15em; color: rgb(50, 158, 179);">无效努力</a><a href="/tags/%E8%AE%BD%E5%88%BA/" style="font-size: 1.15em; color: rgb(101, 61, 101);">讽刺</a><a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" style="font-size: 1.15em; color: rgb(175, 106, 56);">自动化测试</a><a href="/tags/%E6%B5%8B%E8%AF%95%E7%90%86%E8%AE%BA/" style="font-size: 1.15em; color: rgb(166, 167, 69);">测试理论</a><a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8%E6%B5%8B%E8%AF%95/" style="font-size: 1.15em; color: rgb(166, 50, 163);">路由器测试</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
   
-    win.getScript = url => new Promise((resolve, reject) => {
-      const script = document.createElement('script')
-      script.src = url
-      script.async = true
-      script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        script.onload = script.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(script)
-    })
-  
-    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
-      const link = document.createElement('link')
-      link.rel = 'stylesheet'
-      link.href = url
-      if (id) link.id = id
-      link.onerror = reject
-      link.onload = link.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        link.onload = link.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(link)
-    })
-  
-      win.activateDarkMode = function () {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = function () {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
-    
-          if (t === 'dark') activateDarkMode()
-          else if (t === 'light') activateLightMode()
-        
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
-    
-    const detectApple = () => {
-      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-        document.documentElement.classList.add('apple')
-      }
-    }
-    detectApple()
-    })(window)</script><link rel="stylesheet" href="/css/custom.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/universe.css"><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo30rl4qhpfio005od3i2nk1qq0ahjfmpo?imageView2/2/w/540/format/webp" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('https://n.sinaimg.cn/sinakd20210308s/597/w1552h645/20210308/e18f-kkxpcze6040485.png')"><nav id="nav"><span id="blog-info"><a href="/" title="JK"><span class="site-name">JK</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">JK</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/article/60860.html" title="nodejs">nodejs</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-09-05T07:57:54.000Z" title="Created 2023-09-05 15:57:54">2023-09-05</time></span></div><div class="content"></div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/article/16107.html" title="Hello World">Hello World</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-08-25T06:48:13.225Z" title="Created 2023-08-25 14:48:13">2023-08-25</time></span></div><div class="content">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;
-
-More info: Writing
-Run server1$ hexo server
-
-More info: Server
-Generate static files1$ hexo generate
-
-More info: Generating
-Deploy to remote sites1$ hexo deploy
-
-More info: Deployment
-</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo30rl4qhpfio005od3i2nk1qq0ahjfmpo?imageView2/2/w/540/format/webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">JK</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div><div class="xpand" style="height:200px;"><canvas class="illo" width="800" height="800" style="max-width: 200px; max-height: 200px; touch-action: none; width: 640px; height: 640px;"></canvas><script src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/twopeople1.js"></script><script src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/zdog.dist.js"></script><script id="rendered-js" src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/twopeople.js"></script><style>.card-widget.card-announcement {
-margin: 0;
-align-items: center;
-justify-content: center;
-text-align: center;
-}
-canvas {
-display: block;
-margin: 0 auto;
-cursor: move;
-}</style></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/article/60860.html" title="nodejs">nodejs</a><time datetime="2023-09-05T07:57:54.000Z" title="Created 2023-09-05 15:57:54">2023-09-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/article/16107.html" title="Hello World">Hello World</a><time datetime="2023-08-25T06:48:13.225Z" title="Created 2023-08-25 14:48:13">2023-08-25</time></div></div></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/09/"><span class="card-archive-list-date">September 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/08/"><span class="card-archive-list-date">August 2023</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">2</div></div><div class="webinfo-item"><div class="item-name">Run time :</div><div class="item-count" id="runtimeshow" data-publishDate="2023-09-28T16:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Push :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-11-19T04:37:17.576Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background: url(/img/background.jpg)"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By JK</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><a class="icon-V hidden" onclick="switchNightMode()" title="Switch Between Light And Dark Mode"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://fastly.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
-  init: (str) => {
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/08/">
+            <span class="card-archive-list-date">
+              八月 2025
+            </span>
+            <span class="card-archive-list-count">5</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/07/">
+            <span class="card-archive-list-date">
+              七月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/05/">
+            <span class="card-archive-list-date">
+              五月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/04/">
+            <span class="card-archive-list-date">
+              四月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/09/">
+            <span class="card-archive-list-date">
+              九月 2024
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/06/">
+            <span class="card-archive-list-date">
+              六月 2024
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/01/">
+            <span class="card-archive-list-date">
+              一月 2024
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2023/05/">
+            <span class="card-archive-list-date">
+              五月 2023
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">14</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-08-25T13:15:58.727Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By 柯</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: str => {
     window.typed = new Typed('#subtitle', Object.assign({
       strings: str,
       startDelay: 300,
@@ -190,89 +246,40 @@ cursor: move;
       backSpeed: 50,
     }, null))
   },
-  run: (subtitleType) => {
+  run: subtitleType => {
     if (true) {
       if (typeof Typed === 'function') {
         subtitleType()
       } else {
-        getScript('https://fastly.jsdelivr.net/npm/typed.js/dist/typed.umd.min.js').then(subtitleType)
+        btf.getScript('/pluginsSrc/typed.js/dist/typed.umd.js').then(subtitleType)
       }
     } else {
       subtitleType()
     }
-  }
-}
-</script><script>function subtitleType () {
-  if (true) {
-    typedJSFn.init(["改编不是乱编&#44;细说不是胡说","在那么冷的天,抽口电子烟"])
-  } else {
-    document.getElementById("subtitle").textContent = "改编不是乱编&#44;细说不是胡说"
-  }
-}
-typedJSFn.run(subtitleType)</script></div><div class="aplayer no-destroy" data-id="8746378113"  data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" muted></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script src="/js/sun_moon.js" async></script><script id="click-show-text" src="https://fastly.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://fastly.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://fastly.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://fastly.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+  },
+  processSubtitle: (content, extraContents = []) => {
+    if (true) {
+      const sub = ["只要有坚定的理想信念、不懈的奋斗精神，脚踏实地把每件平凡的事做好，一切平凡的人都可以获得不平凡的人生，一切平凡的工作都可以创造不平凡的成就。","生活的真谛从来都不在别处，就在日常一点一滴的奋斗里","相信天道酬勤的道理，相信开放包容的时代，相信相信的力量，日复一日的奋斗，终将换来破茧成蝶的幸福","心怀梦想、奋勇拼搏，一步一个脚印，一棒接着一棒，在奋力奔跑和接续奋斗中成就梦想","坚持道不变、志不改，一以贯之、勠力同心，就一定能够战胜前进中的各种艰难险阻，不断迈向成功的彼岸！"].slice()
 
-var pjax = new Pjax({
-  elements: 'a:not([target="_blank"])',
-  selectors: pjaxSelectors,
-  cacheBust: false,
-  analytics: false,
-  scrollRestoration: false
-})
-
-document.addEventListener('pjax:send', function () {
-
-  // removeEventListener scroll 
-  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
-  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
-
-  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
-  
-  if (window.aplayers) {
-    for (let i = 0; i < window.aplayers.length; i++) {
-      if (!window.aplayers[i].options.fixed) {
-        window.aplayers[i].destroy()
+      if (extraContents.length > 0) {
+        sub.unshift(...extraContents)
       }
+
+      if (typeof content === 'string') {
+        sub.unshift(content)
+      } else if (Array.isArray(content)) {
+        sub.unshift(...content)
+      }
+
+      sub.length > 0 && typedJSFn.init(sub)
+    } else {
+      document.getElementById('subtitle').textContent = typeof content === 'string' ? content :
+        (Array.isArray(content) && content.length > 0 ? content[0] : '')
     }
   }
-
-  typeof typed === 'object' && typed.destroy()
-
-  //reset readmode
-  const $bodyClassList = document.body.classList
-  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
-
-  typeof disqusjs === 'object' && disqusjs.destroy()
-})
-
-document.addEventListener('pjax:complete', function () {
-  window.refreshFn()
-
-  document.querySelectorAll('script[data-pjax]').forEach(item => {
-    const newScript = document.createElement('script')
-    const content = item.text || item.textContent || item.innerHTML || ""
-    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
-    newScript.appendChild(document.createTextNode(content))
-    item.parentNode.replaceChild(newScript, item)
-  })
-
-  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
-
-  typeof panguInit === 'function' && panguInit()
-
-  // google analytics
-  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
-
-  // baidu analytics
-  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
-
-  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
-
-  // prismjs
-  typeof Prism === 'object' && Prism.highlightAll()
-})
-
-document.addEventListener('pjax:error', (e) => {
-  if (e.request.status === 404) {
-    pjax.loadUrl('/404.html')
-  }
-})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+}
+btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
+</script><script>function subtitleType () {
+  typedJSFn.processSubtitle(["只要有坚定的理想信念、不懈的奋斗精神，脚踏实地把每件平凡的事做好，一切平凡的人都可以获得不平凡的人生，一切平凡的工作都可以创造不平凡的成就。","生活的真谛从来都不在别处，就在日常一点一滴的奋斗里","相信天道酬勤的道理，相信开放包容的时代，相信相信的力量，日复一日的奋斗，终将换来破茧成蝶的幸福","心怀梦想、奋勇拼搏，一步一个脚印，一棒接着一棒，在奋力奔跑和接续奋斗中成就梦想","坚持道不变、志不改，一以贯之、勠力同心，就一定能够战胜前进中的各种艰难险阻，不断迈向成功的彼岸！"])
+}
+typedJSFn.run(subtitleType)</script></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="/pluginsSrc/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

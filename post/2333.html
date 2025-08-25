@@ -1,0 +1,213 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>关于软件测试的几种不同意识流 | null</title><meta name="author" content="柯"><meta name="copyright" content="柯"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="众所周知，测试现在有三种意识流：唯技术论、唯业务论、中庸派，这里像分析业务需求一样，分析下为什么会有这些意识的产生，  1. 唯技术论者（多数为早期互联网红利受益者） 背景特征：2010- 2018 年前后入行，身处互联网爆发期（移动互联网崛起、资本涌入、用户增长红利）。 “幸存”逻辑： 业务容错率高： 市场增量巨大，产品方向试错空间大，业务失败常被归因于**“方向”**而非“质量”。测试的核心价">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于软件测试的几种不同意识流">
+<meta property="og:url" content="http://example.com/post/2333.html">
+<meta property="og:site_name">
+<meta property="og:description" content="众所周知，测试现在有三种意识流：唯技术论、唯业务论、中庸派，这里像分析业务需求一样，分析下为什么会有这些意识的产生，  1. 唯技术论者（多数为早期互联网红利受益者） 背景特征：2010- 2018 年前后入行，身处互联网爆发期（移动互联网崛起、资本涌入、用户增长红利）。 “幸存”逻辑： 业务容错率高： 市场增量巨大，产品方向试错空间大，业务失败常被归因于**“方向”**而非“质量”。测试的核心价">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wx4.sinaimg.cn/mw690/006oGz9ggy1i4ltr2rj9cj3272272e81.jpg">
+<meta property="article:published_time" content="2025-05-25T07:49:44.000Z">
+<meta property="article:modified_time" content="2025-08-25T08:00:53.279Z">
+<meta property="article:author" content="柯">
+<meta property="article:tag" content="职场经验">
+<meta property="article:tag" content="求职分析">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wx4.sinaimg.cn/mw690/006oGz9ggy1i4ltr2rj9cj3272272e81.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "关于软件测试的几种不同意识流",
+  "url": "http://example.com/post/2333.html",
+  "image": "https://wx4.sinaimg.cn/mw690/006oGz9ggy1i4ltr2rj9cj3272272e81.jpg",
+  "datePublished": "2025-05-25T07:49:44.000Z",
+  "dateModified": "2025-08-25T08:00:53.279Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "柯",
+      "url": "http://example.com"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/post/2333.html"><link rel="preconnect"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/pluginsSrc/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'undefined')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'undefined')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: '/pluginsSrc/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '关于软件测试的几种不同意识流',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/mycss.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(https://wx4.sinaimg.cn/mw690/006oGz9ggy1i4ltr2rj9cj3272272e81.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name"></span></a><a class="nav-page-title" href="/"><span class="site-name">关于软件测试的几种不同意识流</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">关于软件测试的几种不同意识流</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-25T07:49:44.000Z" title="发表于 2025-05-25 15:49:44">2025-05-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-08-25T08:00:53.279Z" title="更新于 2025-08-25 16:00:53">2025-08-25</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/">软件测试</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>众所周知，测试现在有三种意识流：唯技术论、唯业务论、中庸派，<br>这里像分析业务需求一样，分析下为什么会有这些意识的产生，</p>
+<hr>
+<h4 id="1-唯技术论者（多数为早期互联网红利受益者）"><a href="#1-唯技术论者（多数为早期互联网红利受益者）" class="headerlink" title="1. 唯技术论者（多数为早期互联网红利受益者）"></a><strong>1. 唯技术论者（多数为早期互联网红利受益者）</strong></h4><ul>
+<li><strong>背景特征：</strong><br>2010- 2018 年前后入行，身处互联网爆发期（移动互联网崛起、资本涌入、用户增长红利）。</li>
+<li><strong>“幸存”逻辑：</strong><ul>
+<li><strong>业务容错率高：</strong> 市场增量巨大，产品方向试错空间大，业务失败常被归因于**“方向”**而非“质量”。测试的核心价值更易体现在“伪效率”（如自动化覆盖率、提测速度）和“坤术亮点”（如搭建测试平台、引入 AI 测试）。</li>
+<li><strong>技术杠杆效应强：</strong> 在业务快速迭代中，提升测试效率的技术手段（自动化、持续集成）能立竿见影地体现价值，成为晋升的关键筹码。</li>
+<li><strong>未经历“业务寒冬”：</strong> 他们很少遇到因测试对<strong>核心业务逻辑理解不足</strong>导致重大线上事故或用户流失的情况（业务本身增长掩盖了问题）。</li>
+</ul>
+</li>
+<li><strong>结论：</strong> 他们的成功经验强化了“技术&#x3D;价值”的认知，忘记了红利期的高容错率，遗忘了职场会有的人情世故，忽略了业务深度在质量保障中的底层作用。</li>
+</ul>
+<hr>
+<h4 id="2-唯业务论者（强业务领域从业者）"><a href="#2-唯业务论者（强业务领域从业者）" class="headerlink" title="2. 唯业务论者（强业务领域从业者）"></a><strong>2. 唯业务论者（强业务领域从业者）</strong></h4><ul>
+<li><strong>背景特征：</strong><br>主要服务于金融、政务、传统企业数字化转型、复杂 ToB 等强业务、强流程、强合规领域。</li>
+<li><strong>“幸存”逻辑：</strong><ul>
+<li><strong>技术天花板明显：</strong> 系统老旧、环境封闭、技术栈保守、安全合规限制多，导致自动化&#x2F;新技术落地困难，投入产出比低。</li>
+<li><strong>业务复杂度是核心风险：</strong> 一个业务流程的疏漏可能导致巨额资金损失、法律风险或重大社会影响。测试的核心价值在于<strong>精准理解业务规则、梳理复杂流程、协调多部门协作、确保合规性</strong>。</li>
+<li><strong>流程与人员协调是关键：</strong> 测试在此类项目中更像“业务分析师+质量管控者”，需要极强的沟通、推动和风险控制能力。纯技术手段往往**“使不上劲”**。</li>
+</ul>
+</li>
+<li><strong>结论：</strong> 他们的成功经验强化了“业务&#x2F;流程&#x2F;沟通&#x3D;价值”的认知，可能低估了技术在规模化、效率提升和探索性测试中的潜力。</li>
+</ul>
+<hr>
+<h4 id="3-中庸派（核心价值不在于平衡本身，而在于精准判断何时该向哪端倾斜）"><a href="#3-中庸派（核心价值不在于平衡本身，而在于精准判断何时该向哪端倾斜）" class="headerlink" title="3. 中庸派（核心价值不在于平衡本身，而在于精准判断何时该向哪端倾斜）"></a><strong>3. 中庸派（核心价值不在于平衡本身，而在于精准判断何时该向哪端倾斜）</strong></h4><p>“中庸派”群体其实可以细分为三类：</p>
+<p>第一种是经历完整行业周期的“老江湖”，他们在技术泡沫期吃过亏，也在传统行业碰过壁，被迫成为平衡派；<br>第二种是跨领域流动的“跨界者”，比如从互联网跳到金融科技的人，必须融合两种思维；<br>第三种是组织里的“连接器”角色，比如测试经理或质量架构师，天然需要弥合技术与业务的断层</p>
+<ul>
+<li><strong>背景特征：</strong><ul>
+<li>在互联网爆发期<strong>经历过技术狂热</strong>（如盲目追求自动化率却忽视业务有效性），又在业务寒冬<strong>吃过质量事故的亏</strong>（如因业务理解不足导致重大故障、业务盈利不足导致部门终结）。</li>
+<li>或<strong>横跨过多个领域</strong>（如从互联网跳槽至金融科技&#x2F;医疗健康&#x2F;传统企业数字化）。</li>
+</ul>
+</li>
+<li><strong>认知觉醒：</strong><br>他们深刻体会过 <strong>“单一维度失效”的痛感</strong>：<ul>
+<li>纯技术路线：在业务复杂度高、需求频繁变更、历史包袱重的系统中寸步难行；</li>
+<li>纯业务路线：在追求快速迭代、规模化交付的场景下效率低下，沦为“人肉测试机”。<br><strong>结论：</strong> 被迫走向融合，认识到“<strong>技术是业务的工具，业务是技术的方向盘</strong>”。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="延伸：职业成长“纯努力论”者的幸存者偏差"><a href="#延伸：职业成长“纯努力论”者的幸存者偏差" class="headerlink" title="延伸：职业成长“纯努力论”者的幸存者偏差"></a><strong>延伸：职业成长“纯努力论”者的幸存者偏差</strong></h4><ul>
+<li><strong>核心观点：</strong> 声称自己成功“全靠个人努力”的人，往往恰好避开了重大的系统性风险或坏运气。</li>
+<li><strong>“幸存”逻辑：</strong><ul>
+<li><strong>未遭遇行业&#x2F;公司剧变：</strong> 如行业寒冬（教培）、公司突然倒闭、核心项目被砍、关键领导变动打压等。</li>
+<li><strong>未经历个人重大挫折：</strong> 如严重疾病、家庭变故等不可抗力。</li>
+<li><strong>关键机遇的“运气”成分被忽略：</strong> 如恰好加入爆发期的团队&#x2F;公司、遇到赏识自己的伯乐、在某个技术风口上提前布局（往往有偶然性）。</li>
+</ul>
+</li>
+<li><strong>结论：</strong> 他们将自己的成功主要归因于可控因素（努力、能力），忽视了不可控因素（时机、运气、环境）的关键作用，从而可能产生对他人处境的不理解甚至傲慢。</li>
+</ul>
+<hr>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">柯</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/post/2333.html">http://example.com/post/2333.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">null</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%81%8C%E5%9C%BA%E7%BB%8F%E9%AA%8C/">职场经验</a><a class="post-meta__tags" href="/tags/%E6%B1%82%E8%81%8C%E5%88%86%E6%9E%90/">求职分析</a></div><div class="post-share"><div class="social-share" data-image="https://wx4.sinaimg.cn/mw690/006oGz9ggy1i4ltr2rj9cj3272272e81.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="/pluginsSrc/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="/pluginsSrc/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/post/58604.html" title="姜菌说，测试一定要会测试"><img class="cover" src="https://wx1.sinaimg.cn/mw2000/71d0dc7dgy1i4q5shfw96j22qr1jk4qq.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">姜菌说，测试一定要会测试</div></div><div class="info-2"><div class="info-item-1"> HR 曾经跟我反馈过，说面试者对我颇有微词。 我问原因。 她说面试者觉得我问的问题大多是业务理解和用例设计的基础问题，并未考核他的技术能力，怎么还挂了他。 我不理解。 我陷入沉思。 我不禁要问。 谁带坏了这种风气?  难道用例设计不是测试最核心最基础的技术吗？新入局的兄弟们是不是真的了解这个职业的工作内容？ 是幻想天天 搞开发、安全、性能、架构、AI、运维、云原生还是 和开发吵架，然后把开发的活干了，让他心服口服？ 都不是 普罗大众的测试日常基本都是围绕以下这几个，我象征性的给了比例：  业务需求分析拆解（18%） 需求会议评审（2%） 手工测试执行（15%） 测试用例设计与维护 （14%） 缺陷跟踪与复现 （12%） 测试环境部署验证 （10%） 自动化实现与维护 （9%） 跨部门需求对齐 （8%） 测试数据&#x2F;物料准备（7%） 冒烟测试执行 （4%） 新技术调研&#x2F;工具研发 （1%）   测试设计相关（1+3+4+5+6+10）耗时占比达 73%，如果这个比例不高，离裁员不远了 沟通表达相关（2+8+9）耗时占比达 17% 编码相关工作（7+11）仅占 10...</div></div></div></a><a class="pagination-related" href="/post/36810.html" title="一件有趣的小事"><img class="cover" src="https://wx1.sinaimg.cn/mw2000/71d0dc7dgy1i4q5sqxytsj22yo1o0hdt.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">一件有趣的小事</div></div><div class="info-2"><div class="info-item-1">昨晚剪发 对 Tony 问出多年疑惑  问：“为什么店不大，但要配对讲机？”  刻板印象中，认为是在“扮嘢”做无用功，营造专业感  答： “只因吹风机噪音大，耳麦能清晰地沟通”  果然人不能太自以为是，基于表象的认知，往往容易忽略实际应用场景的复杂性 </div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/post/17770.html" title="关于招聘时的一点人性复杂"><img class="cover" src="https://wx1.sinaimg.cn/mw2000/71d0dc7dgy1i4q5u0s1x5j21hc0o1dze.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-08-25</div><div class="info-item-2">关于招聘时的一点人性复杂</div></div><div class="info-2"><div class="info-item-1">当你面试无法通过时，不要过多在技术上自责，除开技术外，其实还是那么一点社会学在里面，你可以通过这些找找原因，面试官是会因非技术因素（如嫉妒、利益竞争、隐性歧视）拒绝候选人，尤其是在经济下行期，更倾向于“自保”或“维护内部权力结构”。  一、年龄歧视：不愿招比自己“老”的候选人动机 权力威胁：担心资深候选人“不服管”，挑战自己的管理权威； 成本考量：年龄大的候选人薪资预期高，经济下行期企业预算低，更倾向“便宜听话”的年轻人； 刻板印象：认为大龄员工技术迭代慢，不愿接受新工具、新方式。   二、能力威胁：排斥比自己“强”的候选人动机 地位危机：面试官担心招入能力过强的下属，威胁自身晋升机会或者让自己进入裁员池； 团队平衡：部分管理者偏好“可控”的团队，避免“刺头型人才”打破现有权力结构； 利益捆绑：内部可能有“关系户”需安排，优秀候选人反而成为障碍。   三、服从性测试：打压“不听话”的候选人动机 控制成本：经济低迷期企业倾向于选择“妥协度高”的员工； 维护权威：管理层需要绝对服从的执行者，而非独立思考者； 筛选绵羊：能力中等但听话 &gt;&gt; 能力突出有个性。   四、性别&...</div></div></div></a><a class="pagination-related" href="/post/58604.html" title="姜菌说，测试一定要会测试"><img class="cover" src="https://wx1.sinaimg.cn/mw2000/71d0dc7dgy1i4q5shfw96j22qr1jk4qq.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-07-25</div><div class="info-item-2">姜菌说，测试一定要会测试</div></div><div class="info-2"><div class="info-item-1"> HR 曾经跟我反馈过，说面试者对我颇有微词。 我问原因。 她说面试者觉得我问的问题大多是业务理解和用例设计的基础问题，并未考核他的技术能力，怎么还挂了他。 我不理解。 我陷入沉思。 我不禁要问。 谁带坏了这种风气?  难道用例设计不是测试最核心最基础的技术吗？新入局的兄弟们是不是真的了解这个职业的工作内容？ 是幻想天天 搞开发、安全、性能、架构、AI、运维、云原生还是 和开发吵架，然后把开发的活干了，让他心服口服？ 都不是 普罗大众的测试日常基本都是围绕以下这几个，我象征性的给了比例：  业务需求分析拆解（18%） 需求会议评审（2%） 手工测试执行（15%） 测试用例设计与维护 （14%） 缺陷跟踪与复现 （12%） 测试环境部署验证 （10%） 自动化实现与维护 （9%） 跨部门需求对齐 （8%） 测试数据&#x2F;物料准备（7%） 冒烟测试执行 （4%） 新技术调研&#x2F;工具研发 （1%）   测试设计相关（1+3+4+5+6+10）耗时占比达 73%，如果这个比例不高，离裁员不远了 沟通表达相关（2+8+9）耗时占比达 17% 编码相关工作（7+11）仅占 10...</div></div></div></a><a class="pagination-related" href="/post/48358.html" title="功能测试工作常见9大问题及应对策略"><img class="cover" src="https://wx2.sinaimg.cn/large/005x3T92ly1i4pvl2vhipj33m02e0b2a.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-25</div><div class="info-item-2">功能测试工作常见9大问题及应对策略</div></div><div class="info-2"><div class="info-item-1">在功能测试的日常工作中，需求评估、任务冲突、线上故障等问题频发，直接影响测试效率与项目质量。本文梳理了测试人员高频遇到的 9 类核心问题，并结合实战经验提供可落地的应对方案，帮助测试从业者更从容地处理工作挑战。 问题一：测试时间评估测试时间的科学评估需要综合多维度不确定因素，但实际工作中常因信息滞后、任务并行导致评估被动。 理论上，需纳入以下因素综合判断，再通过多方沟通确认合理时间：  需求变更频率与范围 开发进度是否存在延误风险 Bug 修复的稳定性（是否反复出现） 业务流程的复杂程度 测试环境的稳定性（是否频繁断连） 上下游服务的依赖关系（如接口依赖、数据依赖） 测试人员资源分配（是否有专人对接） 是否引入新技术（需额外学习成本） 回归测试的覆盖范围  但现实场景往往是：一个功能测试需同时跟进多个项目，且通常是最晚知晓新需求的人——常被“冷不丁”拉入需求评审会，产品快速讲完需求后，就要求立即给出测试时间，以便其推进后续工作。 针对不同场景，可参考以下应对方法：  临时被拉进会议，需立即预估时间先询问开发的预估开发时长，再根据现场沟通氛围，将测试时间设定为开发时间的 50%-8...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">柯</div><div class="author-info-description">欢迎来到我的博客</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn"><i class="iconfont icon-youxishoubing"></i><span>小程序</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"><p>欢迎来到我的技术博客！</p><div class='xpand' style='height:200px;'><canvas class='illo' width='800' height='800' style='max-width: 200px; max-height: 200px; touch-action: none; width: 640px; height: 640px;'></canvas></div><script src='https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/twopeople1.js'></script><script src='https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/zdog.dist.js'></script><script src='https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/twopeople.js'></script><style>.card-widget.card-announcement {margin: 0;align-items: center;justify-content: center;text-align: center;}canvas {display: block;margin: 0 auto;cursor: move;}</style></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%94%AF%E6%8A%80%E6%9C%AF%E8%AE%BA%E8%80%85%EF%BC%88%E5%A4%9A%E6%95%B0%E4%B8%BA%E6%97%A9%E6%9C%9F%E4%BA%92%E8%81%94%E7%BD%91%E7%BA%A2%E5%88%A9%E5%8F%97%E7%9B%8A%E8%80%85%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">1. 唯技术论者（多数为早期互联网红利受益者）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%94%AF%E4%B8%9A%E5%8A%A1%E8%AE%BA%E8%80%85%EF%BC%88%E5%BC%BA%E4%B8%9A%E5%8A%A1%E9%A2%86%E5%9F%9F%E4%BB%8E%E4%B8%9A%E8%80%85%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">2. 唯业务论者（强业务领域从业者）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%B8%AD%E5%BA%B8%E6%B4%BE%EF%BC%88%E6%A0%B8%E5%BF%83%E4%BB%B7%E5%80%BC%E4%B8%8D%E5%9C%A8%E4%BA%8E%E5%B9%B3%E8%A1%A1%E6%9C%AC%E8%BA%AB%EF%BC%8C%E8%80%8C%E5%9C%A8%E4%BA%8E%E7%B2%BE%E5%87%86%E5%88%A4%E6%96%AD%E4%BD%95%E6%97%B6%E8%AF%A5%E5%90%91%E5%93%AA%E7%AB%AF%E5%80%BE%E6%96%9C%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">3. 中庸派（核心价值不在于平衡本身，而在于精准判断何时该向哪端倾斜）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BB%B6%E4%BC%B8%EF%BC%9A%E8%81%8C%E4%B8%9A%E6%88%90%E9%95%BF%E2%80%9C%E7%BA%AF%E5%8A%AA%E5%8A%9B%E8%AE%BA%E2%80%9D%E8%80%85%E7%9A%84%E5%B9%B8%E5%AD%98%E8%80%85%E5%81%8F%E5%B7%AE"><span class="toc-number">4.</span> <span class="toc-text">延伸：职业成长“纯努力论”者的幸存者偏差</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/post/60841.html" title="论路由器与 Robot Framework 是否强关联？"><img src="https://wx4.sinaimg.cn/large/006WYq6ngy1i1ew6b93k2j32yo1o01kx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="论路由器与 Robot Framework 是否强关联？"/></a><div class="content"><a class="title" href="/post/60841.html" title="论路由器与 Robot Framework 是否强关联？">论路由器与 Robot Framework 是否强关联？</a><time datetime="2025-08-25T08:35:29.000Z" title="发表于 2025-08-25 16:35:29">2025-08-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/17770.html" title="关于招聘时的一点人性复杂"><img src="https://wx1.sinaimg.cn/mw2000/71d0dc7dgy1i4q5u0s1x5j21hc0o1dze.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="关于招聘时的一点人性复杂"/></a><div class="content"><a class="title" href="/post/17770.html" title="关于招聘时的一点人性复杂">关于招聘时的一点人性复杂</a><time datetime="2025-08-25T08:16:19.858Z" title="发表于 2025-08-25 16:16:19">2025-08-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/12278.html" title="从水帖数认识机器学习"><img src="https://wx3.sinaimg.cn/mw2000/71d0dc7dgy1i4pvfvqnc7j22s01ka1kx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="从水帖数认识机器学习"/></a><div class="content"><a class="title" href="/post/12278.html" title="从水帖数认识机器学习">从水帖数认识机器学习</a><time datetime="2025-08-25T07:21:01.117Z" title="发表于 2025-08-25 15:21:01">2025-08-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/16107.html" title="Hello World"><img src="https://wx1.sinaimg.cn/mw2000/71d0dc7dgy1i4pvfvrmpaj20x40in1kx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/post/16107.html" title="Hello World">Hello World</a><time datetime="2025-08-24T06:15:30.983Z" title="发表于 2025-08-24 14:15:30">2025-08-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/25326.html" title="讽刺情景剧：如果真为学习，少加点技术群"><img src="https://wx1.sinaimg.cn/large/006WYq6ngy1i1ew6buc39j32yo1o0wxw.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="讽刺情景剧：如果真为学习，少加点技术群"/></a><div class="content"><a class="title" href="/post/25326.html" title="讽刺情景剧：如果真为学习，少加点技术群">讽刺情景剧：如果真为学习，少加点技术群</a><time datetime="2025-08-20T09:03:36.000Z" title="发表于 2025-08-20 17:03:36">2025-08-20</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By 柯</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="/pluginsSrc/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,113 @@
+/* 卡片透明度设置 */
+.card-widget,
+.layout > div:first-child .card-widget {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* 夜间模式下的卡片 */
+[data-theme='dark'] .card-widget,
+[data-theme='dark'] .layout > div:first-child .card-widget {
+  background: rgba(35, 35, 35, 0.7) !important;
+  border: 1px solid rgba(100, 100, 100, 0.2);
+}
+
+/* 导航栏透明度 */
+#nav,
+#nav.nav-fixed {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* 夜间模式下的导航栏 */
+[data-theme='dark'] #nav,
+[data-theme='dark'] #nav.nav-fixed {
+  background: rgba(35, 35, 35, 0.7) !important;
+  border-bottom: 1px solid rgba(100, 100, 100, 0.2);
+}
+
+/* 页脚透明度 */
+#footer {
+  background: rgba(196, 241, 250, 0.8) !important;
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 253, 253, 0.2);
+}
+
+/* 夜间模式下的页脚 */
+[data-theme='dark'] #footer {
+  background: rgba(35, 35, 35, 0.8) !important;
+  border-top: 1px solid rgba(100, 100, 100, 0.2);
+}
+
+/* 主内容区域透明度 */
+.layout > div:first-child,
+#recent-posts > .recent-post-item,
+#aside-content > .card-widget,
+#page,
+.post-content,
+.article-container,
+#article-container,
+#post,
+#page-content,
+.page-content {
+  background: rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* 文章内容区域特殊处理 */
+#article-container,
+#post-content,
+.post-block,
+.post-content {
+  background: rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+/* 首页文章列表项 - 专门针对你提到的类 */
+.recent-post-item,
+#recent-posts .recent-post-item {
+  background: rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+/* 夜间模式下的主内容区域 */
+[data-theme='dark'] .layout > div:first-child,
+[data-theme='dark'] #recent-posts > .recent-post-item,
+[data-theme='dark'] #aside-content > .card-widget,
+[data-theme='dark'] #page,
+[data-theme='dark'] .post-content,
+[data-theme='dark'] .article-container,
+[data-theme='dark'] #article-container,
+[data-theme='dark'] #post,
+[data-theme='dark'] #page-content,
+[data-theme='dark'] .page-content {
+  background: rgba(35, 35, 35, 0.5) !important;
+  border: 1px solid rgba(100, 100, 100, 0.2);
+}
+
+/* 夜间模式下的文章内容区域 */
+[data-theme='dark'] #article-container,
+[data-theme='dark'] #post-content,
+[data-theme='dark'] .post-block,
+[data-theme='dark'] .post-content {
+  background: rgba(35, 35, 35, 0.5) !important;
+  border: 1px solid rgba(100, 100, 100, 0.2);
+}
+
+/* 夜间模式下的首页文章列表项 */
+[data-theme='dark'] .recent-post-item,
+[data-theme='dark'] #recent-posts .recent-post-item {
+  background: rgba(35, 35, 35, 0.5) !important;
+  border: 1px solid rgba(100, 100, 100, 0.2);
+}

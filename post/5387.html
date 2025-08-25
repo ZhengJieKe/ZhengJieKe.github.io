@@ -1,0 +1,310 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>为什么抓包 https 需要安装代理工具的证书 | null</title><meta name="author" content="柯"><meta name="copyright" content="柯"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="背景知识▧▧ 理解 https 前需要了解的前置知识 加密技术 对称加密： 指的是加密和解密，都是使用同一个密钥，优点是速度快、效率高。缺点是接收方和发送方任一方密钥被泄露都会让加密信息不安全，不适合在互联网上传输密钥，密钥维护的工作量大  非对称加密：指的是密钥对的形式，分为公钥和私钥。使用公钥加密的信息只能用私钥解密，反过来使用私钥加密的信息也只能用公钥解密。优点是公钥与私钥无法互推，适合在互">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为什么抓包 https 需要安装代理工具的证书">
+<meta property="og:url" content="http://example.com/post/5387.html">
+<meta property="og:site_name">
+<meta property="og:description" content="背景知识▧▧ 理解 https 前需要了解的前置知识 加密技术 对称加密： 指的是加密和解密，都是使用同一个密钥，优点是速度快、效率高。缺点是接收方和发送方任一方密钥被泄露都会让加密信息不安全，不适合在互联网上传输密钥，密钥维护的工作量大  非对称加密：指的是密钥对的形式，分为公钥和私钥。使用公钥加密的信息只能用私钥解密，反过来使用私钥加密的信息也只能用公钥解密。优点是公钥与私钥无法互推，适合在互">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wx2.sinaimg.cn/large/007I9UkPgy1i4qawrj5cpj30zl0m8tqj.jpg">
+<meta property="article:published_time" content="2024-06-25T09:14:39.000Z">
+<meta property="article:modified_time" content="2025-08-25T12:31:36.555Z">
+<meta property="article:author" content="柯">
+<meta property="article:tag" content="网络协议">
+<meta property="article:tag" content="面试经验">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wx2.sinaimg.cn/large/007I9UkPgy1i4qawrj5cpj30zl0m8tqj.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "为什么抓包 https 需要安装代理工具的证书",
+  "url": "http://example.com/post/5387.html",
+  "image": "https://wx2.sinaimg.cn/large/007I9UkPgy1i4qawrj5cpj30zl0m8tqj.jpg",
+  "datePublished": "2024-06-25T09:14:39.000Z",
+  "dateModified": "2025-08-25T12:31:36.555Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "柯",
+      "url": "http://example.com"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/post/5387.html"><link rel="preconnect"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/pluginsSrc/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'undefined')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'undefined')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: '/pluginsSrc/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '为什么抓包 https 需要安装代理工具的证书',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/mycss.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(https://wx2.sinaimg.cn/large/007I9UkPgy1i4qawrj5cpj30zl0m8tqj.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name"></span></a><a class="nav-page-title" href="/"><span class="site-name">为什么抓包 https 需要安装代理工具的证书</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">为什么抓包 https 需要安装代理工具的证书</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-06-25T09:14:39.000Z" title="发表于 2024-06-25 17:14:39">2024-06-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-08-25T12:31:36.555Z" title="更新于 2025-08-25 20:31:36">2025-08-25</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/TCP-IP%E5%8D%8F%E8%AE%AE/">TCP/IP协议</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h3><p>▧▧ 理解 https 前需要了解的前置知识</p>
+<h4 id="加密技术"><a href="#加密技术" class="headerlink" title="加密技术"></a>加密技术</h4><ul>
+<li><p>对称加密： 指的是加密和解密，都是使用同一个密钥，优点是速度快、效率高。缺点是接收方和发送方任一方密钥被泄露都会让加密信息不安全，不适合在互联网上传输密钥，密钥维护的工作量大</p>
+</li>
+<li><p>非对称加密：指的是密钥对的形式，分为公钥和私钥。使用公钥加密的信息只能用私钥解密，反过来使用私钥加密的信息也只能用公钥解密。优点是公钥与私钥无法互推，适合在互联网上传输公钥。用户密钥维护量少，每个用户只需要一个非对称密钥对。缺点是加密效率低</p>
+</li>
+<li><p>两种加密方式配合使用： 使用对称密钥加密信息内容，然后用私钥加密对称密钥，用户拿到信息内容后用公钥解密对称密钥，再用对称密钥解密消息内容。通过两种加密方式的套用，抵消了各自的缺点</p>
+</li>
+<li><p>加密安全： - 加密方式无关安全强度，决定安全强度的是密钥的长度 - 解密成本也是安全强度的一种，当解密成本大于解密后的收益，也是安全性强的体现 - 密码有效期小于最快的破解时间也是密码强度的体现</p>
+</li>
+</ul>
+<hr>
+<hr>
+<h4 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h4><p>相当于指纹，一种用于确保数字信息完整性、认证身份和防止否认的技术手段。如：根据散列函数对消息体生成一个 256 位的摘要 A（如 HS256），然后使用私钥对该摘要进行加密生成数字签名。用户收到消息后用公钥解密得到摘要 A，然后根据同样散列函数对消息体生成一个摘要 B，通过对比两个摘要，确认消息体是否被篡改。</p>
+<p><img src="/post/5387/1.png"></p>
+<blockquote>
+<p>.▧▧ 引用下 pity 里的一个函数，这里使用 JWT 提供了一种轻量级的方式来实现数字签名的功能，用于确保 token 的完整性和真实性，本质和数字签名的思想类似，但是 JWT 用的是对称密钥。</p>
+</blockquote>
+<ul>
+<li>在创建 token 时，将数据和密钥输入到散列函数（如 HS256）中，生成一个固定长度的哈希值（签名）</li>
+<li>在解析 token 时，按 . 分割，提取出头部、载荷和签名部分，将头部和载荷数据进行 Base64 解码，得到原始的 JSON 数据，使用相同的密钥和算法对原始的 JSON 数据进行签名，得到一个新的签名值，将新计算得到的签名值与从 JWT 中提取的签名部分进行比对，如果两者相同，则表示 JWT 是有效的；否则，表示 JWT 已被篡改或无效</li>
+<li>另外 ExpiredSignatureError 只返回时间过期的报错，还有无效 token 的情况没有分类出来，需要加上<br>”except InvalidTokenError“<br><img src="/post/5387/2.png"></li>
+</ul>
+<blockquote>
+<p>数字签名这里虽然可以防止消息是否被篡改，但是有个关键点，就是无法保证公钥是否被替换过或者公钥是否属于当前请求的服务器</p>
+</blockquote>
+<hr>
+<hr>
+<h4 id="数字证书"><a href="#数字证书" class="headerlink" title="数字证书"></a>数字证书</h4><ul>
+<li><p>数字证书是什么</p>
+<pre><code>- 数字证书简称为证书，它由证书授权中心（CA）颁发并进行数字签名，以确保其真实性和可信度。证书包含了拥有者的公钥以及与其相关的身份信息，如姓名、电子邮件地址、组织、有效期等。
+
+- 以testerhome的数字证书为例，在证书上能看到【版本】【序列号】【签名算法】【颁发者】【有效期】【主体】【签名】
+</code></pre>
+<p>等信息，testerhome 看得出还是比较穷的，申请的是知名免费的 Let’s Encrypt 证书颁发机构颁发的免费 SSL 证书，免费的证书有效期是 90 天，这里可以看到 5 月 10 号就要过期了。</p>
+</li>
+</ul>
+<p><img src="/post/5387/3.png"></p>
+<p><img src="/post/5387/4.png"></p>
+<ul>
+<li>为什么需要数字证书</li>
+</ul>
+<p>▧▧ 类似身份证是由公安机关签发的一样，主要作用是用于验证网络通信中的身份和信息的真实性。数字证书最核心的作用就是第三方权威机构证明这个公钥持有者是属于谁的</p>
+<ul>
+<li><p>数字证书的应用</p>
+</li>
+<li><p>在 TLS 握手过程中，客户端使用本地的信任证书列表验证服务器的证书是否有效，以 testerhome 为例大致过程如下</p>
+<ul>
+<li><ol>
+<li>chrome 从 testerhome 的 SSL 证书中提取出服务器的数字签名</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>chrome 使用本地信任证书列表（通常是操作系统或浏览器预装的）中的根证书，这些证书包含了可信任的证书颁发机构的公钥。像 testerhome 的就使用根证书的公钥对 testerhome 数字证书进行解密，得到哈希值 A</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>chrome 使用与 testerhome 服务器证书中相同的哈希算法（teserhome 是 SHA-256）对服务器中的公钥、有效期、颁发者等信息进行哈希计算，得到一个哈希值 B</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>如果 A 和 B 两个值相同，则证明服务器证书的数字签名是有效的，未被篡改，里面的公钥也确定是 testerhome 的</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/post/5387/5.png"></p>
+<hr>
+<hr>
+<h3 id="http-的缺陷"><a href="#http-的缺陷" class="headerlink" title="http 的缺陷"></a>http 的缺陷</h3><p>▧▧ http 是明文传输协议，数据传输过程中是以纯文本的形式进行传输。这里的明文指的是未经过加密的数据，这些未经过加密的 http 报文（请求行、请求头、主体）在网络上传输的过程，使得其内容容易被窃听者截取和读取。</p>
+<ul>
+<li>举例 pity 登录接口，用 http 进行请求，对网卡进行抓包能得到传输的数据<br><img src="/post/5387/6.png"></li>
+</ul>
+<hr>
+<hr>
+<h3 id="SSL-和-TLS"><a href="#SSL-和-TLS" class="headerlink" title="SSL 和 TLS"></a>SSL 和 TLS</h3><p>▧▧ 背景： SSL 最初由网景公司(Netscape)开发，用于保护网络通信中的隐私、身份验证和数据完整性。SSL 的安全性存在一些漏洞和弱点，经过多次迭代增强安全性，在 1999 年更新为 TLS。由于 SSL 的最终版本（3.0）与 TLS 的第一版本之间并无明显差异，且这两个术语经常互换使用并混为一谈，现在仍然有人使用 SSL 来指代 TLS，或者使用术语“SSL&#x2F;TLS ”，所以 SSL 证书（技术上也称为“TLS 证书”）。</p>
+<p><img src="/post/5387/7.png"></p>
+<ul>
+<li><p>从上图知道，SSL 层夹在应用层和传输层中间，主要分为两层</p>
+<ul>
+<li><p>SSL 记录协议（SSL Record Protocol ）： 负责将高层协议（如 HTTP）的数据进行分割、压缩 解压缩、加密解密、认证，然后交给传输层协议（如 TCP）进行传输，确保数据的安全性和完整性（MAC 校验）。</p>
+</li>
+<li><p>SSL 握手协议（SSL Handshake Protocol）：SSL 握手协议位于 SSL 协议栈的上层，负责在通信双方建立安全的通信连接之前进行身份验证、协商加密算法和生成会话密钥等操作。</p>
+<ul>
+<li>SSL 密码参数修改协议（SSL Change Cipher Spec Protocol）：SSL 密码参数修改协议是 SSL 协议栈中的一个子协议，用于通知对方从握手阶段的初始加密状态切换到加密通信状态。它主要包括一个特殊的消息类型 ChangeCipherSpec，该消息指示在此消息之后的所有数据都将使用新的加密参数（如会话密钥）进行加密和解密</li>
+<li>SSL 告警协议（SSL Alert Protocol）：SSL 告警协议用于在 SSL 连接中传递警告和错误信息</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<hr>
+<h3 id="信息安全"><a href="#信息安全" class="headerlink" title="信息安全"></a>信息安全</h3><p>▧▧ 信息安全的基本要素：保密性、完整性、可用性、可控性、不可否认性。很明显 http 协议不具有信息安全的要素特征，因此使用 http + ssl 来保证 http 协议传输的安全性，http 是第一个使用 SSL 保证安全性的应用层协议</p>
+<hr>
+<hr>
+<h3 id="https"><a href="#https" class="headerlink" title="https"></a>https</h3><p>给 pity 加下证书，<br><img src="/post/5387/8.png"></p>
+<p>用 postman 发起登录请求，用 wireshark 抓包<br><img src="/post/5387/9.png"></p>
+<p>在进行 HTTPS 请求时，客户端会在 SSL&#x2F;TLS 握手过程中获取服务器的公钥和数字证书。SSL&#x2F;TSL 是一种用于保护通信安全的协议，它在建立安全连接时使用了公钥加密技术。TLS 握手包括以下步骤：</p>
+<p>1.客户端发送 ClientHello 消息：客户端向服务器发送一个包含支持的 TLS 版本、加密算法和其他相关信息的 ClientHello 消息。<br><img src="/post/5387/10.png"></p>
+<p>2.服务器发送 ServerHello 消息：服务器从客户端的支持列表中选择一个 TLS 版本、加密算法等，并将其作为 ServerHello 消息的一部分发送回客户端。<br><img src="/post/5387/11.png"></p>
+<p>3.服务器发送数字证书：服务器会将其数字证书发送给客户端。数字证书中包含了服务器的公钥以及其他身份验证信息，比如服务器的域名等。<br><img src="/post/5387/12.png"></p>
+<p>4.验证数字证书：客户端会验证服务器发送的数字证书，确保其合法性。这个过程包括检查数字证书的签发者、有效期、域名等信息，并验证证书链的完整性。</p>
+<p>5.生成对称密钥：客户端会生成一个对称密钥，并使用服务器的公钥加密后发送给服务器，以便服务器之后能够使用私钥解密。</p>
+<p>6.握手完成：TLS 握手完成后，客户端和服务器就可以使用对称密钥进行加密通信了。</p>
+<p><img src="/post/5387/13.png"></p>
+<hr>
+<hr>
+<h3 id="为什么代理工具能抓到包"><a href="#为什么代理工具能抓到包" class="headerlink" title="为什么代理工具能抓到包"></a>为什么代理工具能抓到包</h3><ul>
+<li><p>原理：基于代理服务器和中间人攻击</p>
+</li>
+<li><p>以 Fiddler 为例，Fiddler 在计算机上安装了自己的根证书（Fiddler Root Certificate），然后将这个根证书当做受信任的证书。当用户通过 Fiddler 代理访问 HTTPS 网站时，Fiddler 将使用自己的根证书替代原始网站的 SSL 证书，建立一个与用户计算机之间的加密通道。大致流程如下：</p>
+<ul>
+<li><ol>
+<li>本地系统信任了 fiddler 生成的自签名证书，配置了 fiddler 的代理。接着在 chrome 上发起 https 请求</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>fiddler 代理收到 TLS 握手请求，根据请求的地址生成临时证书，该证书用 Fiddler 的根证书(也就是你信任的那张)进行签名,再发送给 chrome</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>chrome 检验证书通过后，与服务器（即代理服务器 fiddler）协商出对称密钥 会话密钥 A</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>TLS 握手完成后，chrome 使用会话密钥 A 加密应用层数据发给 fiddler</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>fiddler 使用会话密钥 A 解密数据，并以客户端身份与服务器建立了 TLS 连接并协商出了会话密钥 B，把解密出的数据用会话密钥 B 加密后发给服务器</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>服务器收到 fiddler 的加密数据后用会话密钥 B 解密得到请求数据，根据请求的数据返回响应，响应使用会话密钥 B 加密</li>
+</ol>
+</li>
+<li><ol start="7">
+<li>fiddler 收到响应后用会话密钥 B 解密在用会话密钥 A 加密转发给 chrome</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>大致的流程图<br><img src="/post/5387/14.png"></p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">柯</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/post/5387.html">http://example.com/post/5387.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">null</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">网络协议</a><a class="post-meta__tags" href="/tags/%E9%9D%A2%E8%AF%95%E7%BB%8F%E9%AA%8C/">面试经验</a></div><div class="post-share"><div class="social-share" data-image="https://wx2.sinaimg.cn/large/007I9UkPgy1i4qawrj5cpj30zl0m8tqj.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="/pluginsSrc/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="/pluginsSrc/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/post/48987.html" title="工作常用技术名词（人话版）"><img class="cover" src="https://wx4.sinaimg.cn/large/d315af46gy1i2bc7x5xz1j20zk0k0ta7.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">工作常用技术名词（人话版）</div></div><div class="info-2"><div class="info-item-1">背景    很多名称其实看字面意思都挺抽象的，有时看群里的测试大佬在不停蹦这类术语，感觉很高大上     但其实很多你应该是知道的，只不过没想到别人是这样叫它的。又或者你的主编程语言不是Java     所以看不懂他们在讲啥，因为大部分是Java后端的知识点或者是运维的知识(这帮卷王)。     我尝试翻译成【**人话**】，方便刚入行的新人。也欢迎大家在评论区补充。  1.技术概念名词类𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝 1.1 脚手架▧▧ 该名词如果熟悉工地的，应该会知道脚手架是建筑时 房子周围搭的铁架子。软件开发中，脚手架的意思就是一组预设的代码和文件结构，方便开发人员更快的搭建一个基本的项目框架。前端框架大都有脚手架工具，如使用 React 脚手架创建一个 react 项目 12$ npx create-react-app react-basic  //   npx create-react-app 是固定命令，create-react-app是React脚手架的名称  生成如下： 𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝𒈝...</div></div></div></a><a class="pagination-related" href="/post/14582.html" title="牛奶打奶泡原理"><img class="cover" src="https://wx3.sinaimg.cn/mw2000/71d0dc7dgy1i4pvfvqnc7j22s01ka1kx.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">牛奶打奶泡原理</div></div><div class="info-2"><div class="info-item-1">牛奶打发 牛奶主要组成[ 乳糖 ​ ​]乳糖在牛奶温度在 53-57 度时甜味感最强,因此,温牛奶比冰牛奶更容易让人感到甜美可口 [ 蛋白质 ​]在冷牛奶中蛋白质是折叠的状态，通过加热引起蛋白质变性和重排，露出亲水端和疏水端使用蒸汽棒往牛奶里注入空气时，蛋白质的疏水端为了避开牛奶中的水埋入气泡中就，使得亲水端在气泡外形成一层屏障 并保持气泡的形状, 奶泡就是这样借住蛋白的表面活性作用形成。直到 70 摄氏度时，蛋白质散开或者变性，让蛋白质包裹的气泡破裂，使奶泡劣化，因此奶泡的加热温度不能过高  在图中，蛋白质的疏水端（红色）指向气泡内部，避开水分子，而亲水端（绿色）指向外部，与水分子接触。这个结构使气泡稳定，形成了一层保护气泡的屏障，从而保持气泡的形状。：    气泡（淡蓝色圆形）：表示牛奶中的空气气泡。 水分子（蓝色小圆点）：围绕在气泡周围。 蛋白质分子（红色和绿色圆点，连线表示分子结构）：红色圆点表示蛋白质的疏水端，绿色圆点表示蛋白质的亲水端。  [ 脂肪 ​ ​]脂肪影响奶泡的厚度、质量和持续的时间，脂肪含量越多，奶泡越浓厚且奶泡持续的时间也越长打奶泡时气泡彼此相互接触和堆...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/post/17770.html" title="关于招聘时的一点人性复杂"><img class="cover" src="https://wx1.sinaimg.cn/mw2000/71d0dc7dgy1i4q5u0s1x5j21hc0o1dze.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-08-25</div><div class="info-item-2">关于招聘时的一点人性复杂</div></div><div class="info-2"><div class="info-item-1">当你面试无法通过时，不要过多在技术上自责，除开技术外，其实还是那么一点社会学在里面，你可以通过这些找找原因，面试官是会因非技术因素（如嫉妒、利益竞争、隐性歧视）拒绝候选人，尤其是在经济下行期，更倾向于“自保”或“维护内部权力结构”。  一、年龄歧视：不愿招比自己“老”的候选人动机 权力威胁：担心资深候选人“不服管”，挑战自己的管理权威； 成本考量：年龄大的候选人薪资预期高，经济下行期企业预算低，更倾向“便宜听话”的年轻人； 刻板印象：认为大龄员工技术迭代慢，不愿接受新工具、新方式。   二、能力威胁：排斥比自己“强”的候选人动机 地位危机：面试官担心招入能力过强的下属，威胁自身晋升机会或者让自己进入裁员池； 团队平衡：部分管理者偏好“可控”的团队，避免“刺头型人才”打破现有权力结构； 利益捆绑：内部可能有“关系户”需安排，优秀候选人反而成为障碍。   三、服从性测试：打压“不听话”的候选人动机 控制成本：经济低迷期企业倾向于选择“妥协度高”的员工； 维护权威：管理层需要绝对服从的执行者，而非独立思考者； 筛选绵羊：能力中等但听话 &gt;&gt; 能力突出有个性。   四、性别&...</div></div></div></a><a class="pagination-related" href="/post/58604.html" title="姜菌说，测试一定要会测试"><img class="cover" src="https://wx1.sinaimg.cn/mw2000/71d0dc7dgy1i4q5shfw96j22qr1jk4qq.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-07-25</div><div class="info-item-2">姜菌说，测试一定要会测试</div></div><div class="info-2"><div class="info-item-1"> HR 曾经跟我反馈过，说面试者对我颇有微词。 我问原因。 她说面试者觉得我问的问题大多是业务理解和用例设计的基础问题，并未考核他的技术能力，怎么还挂了他。 我不理解。 我陷入沉思。 我不禁要问。 谁带坏了这种风气?  难道用例设计不是测试最核心最基础的技术吗？新入局的兄弟们是不是真的了解这个职业的工作内容？ 是幻想天天 搞开发、安全、性能、架构、AI、运维、云原生还是 和开发吵架，然后把开发的活干了，让他心服口服？ 都不是 普罗大众的测试日常基本都是围绕以下这几个，我象征性的给了比例：  业务需求分析拆解（18%） 需求会议评审（2%） 手工测试执行（15%） 测试用例设计与维护 （14%） 缺陷跟踪与复现 （12%） 测试环境部署验证 （10%） 自动化实现与维护 （9%） 跨部门需求对齐 （8%） 测试数据&#x2F;物料准备（7%） 冒烟测试执行 （4%） 新技术调研&#x2F;工具研发 （1%）   测试设计相关（1+3+4+5+6+10）耗时占比达 73%，如果这个比例不高，离裁员不远了 沟通表达相关（2+8+9）耗时占比达 17% 编码相关工作（7+11）仅占 10...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">柯</div><div class="author-info-description">欢迎来到我的博客</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn"><i class="iconfont icon-youxishoubing"></i><span>小程序</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"><p>欢迎来到我的技术博客！</p><div class='xpand' style='height:200px;'><canvas class='illo' width='800' height='800' style='max-width: 200px; max-height: 200px; touch-action: none; width: 640px; height: 640px;'></canvas></div><script src='https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/twopeople1.js'></script><script src='https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/zdog.dist.js'></script><script src='https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/twopeople.js'></script><style>.card-widget.card-announcement {margin: 0;align-items: center;justify-content: center;text-align: center;}canvas {display: block;margin: 0 auto;cursor: move;}</style></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">背景知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A0%E5%AF%86%E6%8A%80%E6%9C%AF"><span class="toc-number">1.1.</span> <span class="toc-text">加密技术</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D"><span class="toc-number">1.2.</span> <span class="toc-text">数字签名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6"><span class="toc-number">1.3.</span> <span class="toc-text">数字证书</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#http-%E7%9A%84%E7%BC%BA%E9%99%B7"><span class="toc-number">2.</span> <span class="toc-text">http 的缺陷</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SSL-%E5%92%8C-TLS"><span class="toc-number">3.</span> <span class="toc-text">SSL 和 TLS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8"><span class="toc-number">4.</span> <span class="toc-text">信息安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#https"><span class="toc-number">5.</span> <span class="toc-text">https</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BB%A3%E7%90%86%E5%B7%A5%E5%85%B7%E8%83%BD%E6%8A%93%E5%88%B0%E5%8C%85"><span class="toc-number">6.</span> <span class="toc-text">为什么代理工具能抓到包</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/post/60841.html" title="论路由器与 Robot Framework 是否强关联？"><img src="https://wx4.sinaimg.cn/large/006WYq6ngy1i1ew6b93k2j32yo1o01kx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="论路由器与 Robot Framework 是否强关联？"/></a><div class="content"><a class="title" href="/post/60841.html" title="论路由器与 Robot Framework 是否强关联？">论路由器与 Robot Framework 是否强关联？</a><time datetime="2025-08-25T08:35:29.000Z" title="发表于 2025-08-25 16:35:29">2025-08-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/17770.html" title="关于招聘时的一点人性复杂"><img src="https://wx1.sinaimg.cn/mw2000/71d0dc7dgy1i4q5u0s1x5j21hc0o1dze.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="关于招聘时的一点人性复杂"/></a><div class="content"><a class="title" href="/post/17770.html" title="关于招聘时的一点人性复杂">关于招聘时的一点人性复杂</a><time datetime="2025-08-25T08:16:19.858Z" title="发表于 2025-08-25 16:16:19">2025-08-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/12278.html" title="从水帖数认识机器学习"><img src="https://wx3.sinaimg.cn/mw2000/71d0dc7dgy1i4pvfvqnc7j22s01ka1kx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="从水帖数认识机器学习"/></a><div class="content"><a class="title" href="/post/12278.html" title="从水帖数认识机器学习">从水帖数认识机器学习</a><time datetime="2025-08-25T07:21:01.117Z" title="发表于 2025-08-25 15:21:01">2025-08-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/16107.html" title="Hello World"><img src="https://wx1.sinaimg.cn/mw2000/71d0dc7dgy1i4pvfvrmpaj20x40in1kx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/post/16107.html" title="Hello World">Hello World</a><time datetime="2025-08-24T06:15:30.983Z" title="发表于 2025-08-24 14:15:30">2025-08-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/25326.html" title="讽刺情景剧：如果真为学习，少加点技术群"><img src="https://wx1.sinaimg.cn/large/006WYq6ngy1i1ew6buc39j32yo1o0wxw.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="讽刺情景剧：如果真为学习，少加点技术群"/></a><div class="content"><a class="title" href="/post/25326.html" title="讽刺情景剧：如果真为学习，少加点技术群">讽刺情景剧：如果真为学习，少加点技术群</a><time datetime="2025-08-20T09:03:36.000Z" title="发表于 2025-08-20 17:03:36">2025-08-20</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By 柯</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="/pluginsSrc/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
